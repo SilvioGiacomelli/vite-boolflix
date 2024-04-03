@@ -32,7 +32,7 @@ import Main from './components/Main.vue';
           params:this.store.queryParams
         })
         .then(result => {
-          this.store.moviesArray = result.data.results
+          this.store.seriesArray = result.data.results
           console.log(this.store.seriesArray);
         })
         .catch(error => {
@@ -42,13 +42,14 @@ import Main from './components/Main.vue';
     },
     mounted(){
       this.getMovie()
+      this.getSeries()
     }
   }
 </script>
 
   <template>
 
-    <Header @startSearch="getMovie"/>
+    <Header @startSearch="getSeries(),getMovie()"/>
 
     <Main />
 
