@@ -14,7 +14,9 @@ import {store} from '../data/store'
 </script>
 <template>
   <main>
-
+    <div class="container">
+      <Card/>
+    </div>
   </main>
 </template>
 
