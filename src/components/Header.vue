@@ -4,11 +4,22 @@ import {store} from '../data/store'
     data(){
       return{
         store,
-        nameToSearch:''
+        titleToSearch:'',
+        originaltitltleToSearch:'',
+        languageToSearch:'',
+        voteToSearch:'',
       }
     },
     methods:{
-      
+      startSearch(){
+        this.store.queryParams = {
+          title: this.titleToSearch,
+          original_title: this.originaltitltleToSearch,
+          original_language: this.languageToSearch,
+          vote_average: this.voteToSearch,
+        }
+        this.$emit('startSearch')
+      },
     }
   }
 </script>

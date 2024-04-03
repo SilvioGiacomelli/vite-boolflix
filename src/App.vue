@@ -12,13 +12,31 @@ import Main from './components/Main.vue';
       return{
         store,
       }
+    },
+
+    methods:{
+      getMovie(){
+        axios.get(this.store.moviesUrl, {
+          params:store.queryParams
+        })
+        .then(result => {
+          this.store.moviesArray = result.data.results
+          console.log(this.store.moviesArray);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+    },
+    mounted(){
+      this.getMovie()
     }
   }
 </script>
 
   <template>
 
-    <Header />
+    <Header @startSearch="getApi"/>
 
     <Main />
 
