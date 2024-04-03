@@ -18,10 +18,11 @@ import{store} from '../../data/store'
 <template>
   <div>
     <div 
-    class="card col mb-5" 
+    class="card col h-100 " 
     style="width: 18rem;">
       <img 
-      :src="poster_path" class="card-img-top">
+      :src="`https://image.tmdb.org/t/p/w342${poster_path}`" 
+      class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{ original_title }}</h5>
         <p class="card-text">{{ title }}</p>

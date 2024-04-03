@@ -48,4 +48,9 @@ import {store} from '../data/store'
 main{
   background-color: #434343;
 }
+
+h2{
+  color: white;
+  padding-bottom: 10px;
+}
 </style>
