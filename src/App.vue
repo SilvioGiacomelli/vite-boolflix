@@ -17,7 +17,7 @@ import Main from './components/Main.vue';
     methods:{
       getMovie(){
         axios.get(this.store.moviesUrl, {
-          params:store.queryParams
+          params:this.store.queryParams
         })
         .then(result => {
           this.store.moviesArray = result.data.results
@@ -36,7 +36,7 @@ import Main from './components/Main.vue';
 
   <template>
 
-    <Header @startSearch="getApi"/>
+    <Header @startSearch="getMovie"/>
 
     <Main />
 

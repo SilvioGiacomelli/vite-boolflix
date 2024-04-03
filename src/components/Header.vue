@@ -12,13 +12,8 @@ import {store} from '../data/store'
     },
     methods:{
       startSearch(){
-        this.store.queryParams = {
-          title: this.titleToSearch,
-          original_title: this.originaltitltleToSearch,
-          original_language: this.languageToSearch,
-          vote_average: this.voteToSearch,
-        }
-        this.$emit('startSearch')
+        this.store.queryParams.query = this.titleToSearch;
+        this.$emit('startSearch');
       },
     }
   }
@@ -36,7 +31,22 @@ import {store} from '../data/store'
           <div class="input-group-prepend">
             <button class="btn btn-outline-secondary" type="button">Search</button>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+          <input 
+          type="text" 
+          class="form-control" 
+          placeholder="" 
+          aria-label="" 
+          aria-describedby="basic-addon1"
+          v-model.trim="titleToSearch"
+          @keyup.enter="startSearch"
+          >
+          <datalist id="datalistOptions">
+          <option 
+          v-for="(title, index) in this.store.movieList" 
+          :key="index" 
+          :value="title">
+        </option>
+        </datalist>
         </div>
     </div>
   </header>
