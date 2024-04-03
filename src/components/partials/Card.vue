@@ -1,24 +1,33 @@
 <script>
+import{store} from '../../data/store'
   export default {
     props:{
       original_title: String,
       title: String,
       original_language: String,
-      vote_average: String,
+      vote_average: Number,
       poster_path: String,
-    }
+    },
+    data() {
+      return {
+        store
+      }
+    },
   }
 </script>
 <template>
   <div>
-    <div class="card" style="width: 18rem;">
+    <div 
+    class="card col mb-5" 
+    style="width: 18rem;">
       <img 
       :src="poster_path" class="card-img-top">
       <div class="card-body">
-        <h5 class="card-title">{{ original_language }}</h5>
+        <h5 class="card-title">{{ original_title }}</h5>
         <p class="card-text">{{ title }}</p>
         <p class="card-text">{{ original_language }}</p>
-        <p class="card-text">{{ poster_path }}</p>
+        <p class="card-text">{{ vote_average }}</p>
+        <p class="card-text altezza"></p>
       </div>
     </div>
   </div>
@@ -26,5 +35,10 @@
 
 
 <style lang="scss" scoped>
+altezza{
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
 </style>

@@ -14,6 +14,7 @@ import {store} from '../data/store'
       startSearch(){
         this.store.queryParams.query = this.titleToSearch;
         this.$emit('startSearch');
+        console.log(this.store.queryParams.query);
       },
     }
   }
@@ -29,7 +30,11 @@ import {store} from '../data/store'
     <div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary" type="button">Search</button>
+            <button 
+            class="btn btn-outline-secondary" 
+            @click="startSearch"
+            type="button">Search
+            </button>
           </div>
           <input 
           type="text" 
@@ -40,13 +45,6 @@ import {store} from '../data/store'
           v-model.trim="titleToSearch"
           @keyup.enter="startSearch"
           >
-          <datalist id="datalistOptions">
-          <option 
-          v-for="(title, index) in this.store.movieList" 
-          :key="index" 
-          :value="title">
-        </option>
-        </datalist>
         </div>
     </div>
   </header>

@@ -26,6 +26,18 @@ import Main from './components/Main.vue';
         .catch(error => {
           console.log(error);
         })
+      },
+      getSeries(){
+        axios.get(this.store.seriesUrl, {
+          params:this.store.queryParams
+        })
+        .then(result => {
+          this.store.moviesArray = result.data.results
+          console.log(this.store.seriesArray);
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
     },
     mounted(){
