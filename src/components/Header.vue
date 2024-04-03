@@ -41,6 +41,7 @@ import {store} from '../data/store'
     color: red;
   }
   button{
+    background-color: red;
     color: white;
   }
 </style>

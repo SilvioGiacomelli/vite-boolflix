@@ -14,8 +14,12 @@ import {store} from '../data/store'
 </script>
 <template>
   <main>
-    <div class="container">
-      <Card/>
+    <div class="container pt-5">
+      <div class="row row-cols-4">
+        <div class="col mb-5">
+          <Card/>
+        </div>
+      </div>
     </div>
   </main>
 </template>
