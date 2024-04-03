@@ -13,22 +13,28 @@ import{store} from '../../data/store'
         store
       }
     },
-  }
+    methods: {
+    convertStar(vote) {
+      let stelle = '';
+      const intero = Math.ceil(vote);
+      const numStelle = Math.min(intero / 2, 5);
+      for (let i = 0; i < numStelle; i++) {
+        stelle += '<i class="fas fa-star"></i>';
+      }
+      return stelle;
+    },
+  },
+};
 </script>
 <template>
   <div>
-    <div 
-    class="card col h-100 " 
-    style="width: 18rem;">
-      <img 
-      :src="`https://image.tmdb.org/t/p/w342${poster_path}`" 
-      class="card-img-top">
+    <div class="card col h-100" style="width: 18rem;">
+      <img :src="`https://image.tmdb.org/t/p/w342${poster_path}`" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{ original_title }}</h5>
         <p class="card-text">{{ title }}</p>
         <p class="card-text">{{ original_language }}</p>
-        <p class="card-text">{{ vote_average }}</p>
-        <p class="card-text altezza"></p>
+        <p class="card-text" v-html="convertStar(vote_average)"></p>
       </div>
     </div>
   </div>
