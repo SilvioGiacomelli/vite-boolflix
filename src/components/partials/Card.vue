@@ -80,6 +80,11 @@ import{store} from '../../data/store'
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  &:hover {
+    transform: scale(1.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  }
 }
 
 altezza{
@@ -116,4 +121,6 @@ altezza{
   height: 30px;
   }
 }
+
+
 </style>
