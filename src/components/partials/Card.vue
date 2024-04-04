@@ -40,19 +40,13 @@ import{store} from '../../data/store'
 </script>
 
 <template>
-  <div>
-    <div class="card col my-5 " style="width: 18rem;">
-      <img
-      v-if="poster_path" 
-      :src="`https://image.tmdb.org/t/p/w342${poster_path}`" 
-      class="card-img-top"></img>
-      <img
-      v-else
-      src="../../assets/img/stock.jpg">
-      <img src="" alt="">
-      <div class="card-body">
-        <h5 class="card-title">{{ original_title }}</h5>
-        <p class="card-text">{{ title }}</p>
+  <div class="card col my-5 " style="width: 18rem;">
+    <img v-if="poster_path" :src="`https://image.tmdb.org/t/p/w342${poster_path}`" class="card-img-top" alt="Poster del film">
+    <img v-else src="../../assets/img/stock.jpg" alt="Immagine di riserva">
+
+    <div class="card-info">
+      <h5 class="card-title">{{ original_title }}</h5>
+      <p class="card-text">{{ title }}</p>
         <img
         v-if="original_language === 'en'" src="../../assets/flags/en.png"
         ></img>
@@ -67,61 +61,81 @@ import{store} from '../../data/store'
         <p class="card-text stelle" v-html="convertStar(vote_average)"></p>
         <p class="card-text">{{ overview }}</p>
       </div>
-    </div>
   </div>
 </template>
 
 
 <style lang="scss" scoped>
 
-.card{
+.card {
   background-color: #000000;
   color: white;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  position: relative;
+  overflow: hidden;
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 100px white;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
   }
-  
+  &:hover .card-info {
+    transform: translateY(0%);
+  }
 }
 
-altezza{
-  height: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
+.card-img-top {
+  width: 100%;
+  display: block;
+  border-radius: 10px 10px 0 0; 
 }
 
-.stelle{
+.card-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: start; 
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  overflow-y: auto; 
+  scrollbar-width: thin;
+  scrollbar-color: #FFD700 rgba(0, 0, 0, 0.5);
+}
+
+
+.card:hover .card-info {
+  opacity: 1;
+  visibility: visible;
+}
+
+.stelle {
   color: #FFD700;
   font-size: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-  text-align: center
 }
 
-.card-title{
+.card-title {
   font-size: 20px;
   font-weight: bold;
 }
 
-.card-text{
+.card-text {
   font-size: 15px;
 }
 
-.col{
+.col {
   padding: 0;
   height: 95%;
 }
-
-.card-body {
-  img{
-  width: 30px;
-  height: 30px;
-  }
-}
-
 
 </style>
