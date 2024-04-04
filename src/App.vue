@@ -16,10 +16,9 @@ import Main from './components/Main.vue';
     },
 
     methods:{
-      getPopular(){
-        axios.get(this.store.popularUrl, {
-          params:this.store.queryParams,
-          api_key:'9269e4696eb5f1f8ef1c67d5c1abd16c',
+      getPopular(type){
+        axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=9269e4696eb5f1f8ef1c67d5c1abd16c` ,{
+          params:{query:''}
         })
         .then(result => {
           this.store.popularArray = result.data.results
@@ -55,7 +54,8 @@ import Main from './components/Main.vue';
       }
     },
     mounted(){
-      this.getPopular()
+      this.getPopular('movie');
+      this.getPopular('tv')
     }
   }
 </script>
