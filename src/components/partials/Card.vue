@@ -40,6 +40,7 @@ import{store} from '../../data/store'
 </script>
 
 <template>
+  
   <div class="card col my-5 " style="width: 18rem;">
     <img v-if="poster_path" :src="`https://image.tmdb.org/t/p/w342${poster_path}`" class="card-img-top" alt="Poster del film">
     <img v-else src="../../assets/img/stock.jpg" alt="Immagine di riserva">

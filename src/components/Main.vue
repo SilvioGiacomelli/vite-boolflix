@@ -3,7 +3,7 @@ import Card from './partials/Card.vue'
 import {store} from '../data/store'
   export default {
     components:{
-      Card
+      Card      
     },
     data(){
       return{
@@ -13,7 +13,7 @@ import {store} from '../data/store'
   }
 </script>
 <template>
-  <main >
+  <main>
     <div class="container-xl  pt-5">
       <h2>FILM</h2>
       <div class="row row-cols-4">

@@ -4,6 +4,7 @@ import {store} from './data/store';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
   export default {
+    
     components:{
       Header,
       Main,
@@ -16,8 +17,9 @@ import Main from './components/Main.vue';
 
     methods:{
       getPopular(){
-        axios.get(this.store.moviesUrl, {
-          params:this.store.queryParams
+        axios.get(this.store.popularUrl, {
+          params:this.store.queryParams,
+          api_key:'9269e4696eb5f1f8ef1c67d5c1abd16c',
         })
         .then(result => {
           this.store.popularArray = result.data.results
@@ -53,8 +55,6 @@ import Main from './components/Main.vue';
       }
     },
     mounted(){
-      this.getMovie()
-      this.getSeries()
       this.getPopular()
     }
   }
