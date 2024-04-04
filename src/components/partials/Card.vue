@@ -7,6 +7,7 @@ import{store} from '../../data/store'
       original_language: String,
       vote_average: Number,
       poster_path: String,
+      overview: String,
     },
     data() {
       return {
@@ -40,8 +41,15 @@ import{store} from '../../data/store'
 
 <template>
   <div>
-    <div class="card col h-100" style="width: 18rem;">
-      <img :src="`https://image.tmdb.org/t/p/w342${poster_path}`" class="card-img-top">
+    <div class="card col my-5 " style="width: 18rem;">
+      <img
+      v-if="poster_path" 
+      :src="`https://image.tmdb.org/t/p/w342${poster_path}`" 
+      class="card-img-top"></img>
+      <img
+      v-else
+      src="../../assets/img/stock.jpg">
+      <img src="" alt="">
       <div class="card-body">
         <h5 class="card-title">{{ original_title }}</h5>
         <p class="card-text">{{ title }}</p>
@@ -57,6 +65,7 @@ import{store} from '../../data/store'
         <p
         v-else>{{ original_language }}</p>
         <p class="card-text stelle" v-html="convertStar(vote_average)"></p>
+        <p class="card-text">{{ overview }}</p>
       </div>
     </div>
   </div>
@@ -71,7 +80,6 @@ import{store} from '../../data/store'
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  
 }
 
 altezza{
@@ -86,6 +94,20 @@ altezza{
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center
+}
+
+.card-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-text{
+  font-size: 15px;
+}
+
+.col{
+  padding: 0;
+  height: 95%;
 }
 
 .card-body {

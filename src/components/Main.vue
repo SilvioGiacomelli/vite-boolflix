@@ -25,6 +25,7 @@ import {store} from '../data/store'
           :original_language="card.original_language"
           :vote_average="card.vote_average"
           :poster_path="card.poster_path"
+          :overview="card.overview"
           />
       </div>
       <h2>SERIE</h2>
@@ -37,6 +38,7 @@ import {store} from '../data/store'
           :original_language="serie.original_language"
           :vote_average="serie.vote_average"
           :poster_path="serie.poster_path"
+          :overview="serie.overview"
           />
       </div>
     </div>
@@ -45,12 +47,18 @@ import {store} from '../data/store'
 
 
 <style lang="scss" scoped>
+
 main{
   background-color: #434343;
+  color: white;
 }
 
 h2{
   color: white;
-  padding-bottom: 10px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 3rem;
 }
+
 </style>

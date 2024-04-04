@@ -15,6 +15,18 @@ import Main from './components/Main.vue';
     },
 
     methods:{
+      getPopular(){
+        axios.get(this.store.popularUrl, {
+          params:this.store.queryParams
+        })
+        .then(result => {
+          this.store.popularArray = result.data.results
+          console.log(this.store.popularArray);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      },
       getMovie(){
         axios.get(this.store.moviesUrl, {
           params:this.store.queryParams
@@ -43,6 +55,7 @@ import Main from './components/Main.vue';
     mounted(){
       this.getMovie()
       this.getSeries()
+      this.getPopular()
     }
   }
 </script>

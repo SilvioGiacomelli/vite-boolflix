@@ -52,6 +52,7 @@ import {store} from '../data/store'
 
 
 <style lang="scss" scoped>
+
   header{
     background-color: #000000;
     height: 150px;
@@ -63,4 +64,5 @@ import {store} from '../data/store'
     background-color: red;
     color: white;
   }
+
 </style>
