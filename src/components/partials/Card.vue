@@ -14,18 +14,30 @@ import{store} from '../../data/store'
       }
     },
     methods: {
-    convertStar(vote) {
+      convertStar(vote) {
       let stelle = '';
-      const intero = Math.ceil(vote);
-      const numStelle = Math.min(intero / 2, 5);
-      for (let i = 0; i < numStelle; i++) {
-        stelle += '<i class="fas fa-star"></i>';
+      const rating = vote / 2; 
+      const stellePiene = Math.floor(rating);
+      const haMezzaStella = rating % 1 >= 0.5;
+      const stelleVuote = 5 - stellePiene - (haMezzaStella ? 1 : 0);
+      
+      for (let i = 0; i < stellePiene; i++) {
+        stelle += '<i class="fas fa-star stelle"></i>'; 
       }
+      
+      if (haMezzaStella) {
+        stelle += '<i class="fas fa-star-half-alt stelle"></i>'; 
+      }
+      
+      for (let i = 0; i < stelleVuote; i++) {
+        stelle += '<i class="far fa-star stelle"></i>';
+      }      
       return stelle;
-    },
+    }
   },
 };
 </script>
+
 <template>
   <div>
     <div class="card col h-100" style="width: 18rem;">
@@ -33,8 +45,18 @@ import{store} from '../../data/store'
       <div class="card-body">
         <h5 class="card-title">{{ original_title }}</h5>
         <p class="card-text">{{ title }}</p>
-        <p class="card-text">{{ original_language }}</p>
-        <p class="card-text" v-html="convertStar(vote_average)"></p>
+        <img
+        v-if="original_language === 'en'" src="../../assets/flags/en.png"
+        ></img>
+        <img
+        v-else-if="original_language === 'it'" src="../../assets/flags/it.png"
+        ></img>
+        <img
+        v-else-if="original_language === 'ja'" src="../../assets/flags/ja.png"
+        ></img>
+        <p
+        v-else>{{ original_language }}</p>
+        <p class="card-text stelle" v-html="convertStar(vote_average)"></p>
       </div>
     </div>
   </div>
@@ -42,10 +64,34 @@ import{store} from '../../data/store'
 
 
 <style lang="scss" scoped>
+
+.card{
+  background-color: #000000;
+  color: white;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  
+}
+
 altezza{
   height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
+.stelle{
+  color: #FFD700;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center
+}
+
+.card-body {
+  img{
+  width: 30px;
+  height: 30px;
+  }
+}
 </style>
