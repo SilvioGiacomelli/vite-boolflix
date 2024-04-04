@@ -16,15 +16,22 @@ import {store} from '../data/store'
         this.$emit('startSearch');
         console.log(this.store.queryParams.query);
       },
+      resetRicerca(){
+        this.titleToSearch = '';
+        this.originaltitltleToSearch = '';
+        this.languageToSearch = '';
+        this.startSearch();
+      }
     }
   }
 </script>
 <template>
   <header class="container-fluid d-flex align-items-center justify-content-between">
-    <div>
-      <h1>
-        BOOLFLIX
-      </h1>
+    <div class="logo">
+      <img 
+      src="../assets/img/boolflix-logo.png" 
+      @click="resetRicerca()"
+      >
     </div>
 
     <div>
@@ -64,5 +71,11 @@ import {store} from '../data/store'
     background-color: red;
     color: white;
   }
-
+  .logo{
+    img{
+      width: 200px;
+      padding-left: 10px;
+      cursor: pointer;
+    }
+  }
 </style>

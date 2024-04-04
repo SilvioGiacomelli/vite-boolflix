@@ -16,7 +16,7 @@ import Main from './components/Main.vue';
 
     methods:{
       getPopular(){
-        axios.get(this.store.popularUrl, {
+        axios.get(this.store.moviesUrl, {
           params:this.store.queryParams
         })
         .then(result => {

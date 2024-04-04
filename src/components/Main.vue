@@ -13,7 +13,7 @@ import {store} from '../data/store'
   }
 </script>
 <template>
-  <main>
+  <main >
     <div class="container-xl  pt-5">
       <h2>FILM</h2>
       <div class="row row-cols-4">
@@ -54,7 +54,7 @@ main{
 }
 
 h2{
-  color: white;
+  color: red;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
