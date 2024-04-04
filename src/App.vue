@@ -15,10 +15,16 @@ import Main from './components/Main.vue';
       }
     },
 
+      //////FILM POPOLARI///////
+
     methods:{
-      getPopular(type){
-        axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=9269e4696eb5f1f8ef1c67d5c1abd16c` ,{
-          params:{query:''}
+      getPopular(){
+        axios.get(this.store.popularUrl, {
+          params:{
+            api_key: '9269e4696eb5f1f8ef1c67d5c1abd16c',
+            language: 'it-IT',
+            query:'',
+          }
         })
         .then(result => {
           this.store.popularArray = result.data.results
@@ -28,6 +34,28 @@ import Main from './components/Main.vue';
           console.log(error);
         })
       },
+
+      //////SERIE POPOLARI///////
+
+      getPopularSeries(){
+        axios.get(this.store.popularseriesUrl, {
+          params:{
+            api_key: '9269e4696eb5f1f8ef1c67d5c1abd16c',
+            language: 'it-IT',
+            query:'',
+          }
+        })
+        .then(result => {
+          this.store.popularseriesArray = result.data.results
+          console.log(this.store.popularseriesArray);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      },
+
+      ///////FILM//////
+
       getMovie(){
         axios.get(this.store.moviesUrl, {
           params:this.store.queryParams
@@ -40,6 +68,9 @@ import Main from './components/Main.vue';
           console.log(error);
         })
       },
+
+      //////SERIE///////
+
       getSeries(){
         axios.get(this.store.seriesUrl, {
           params:this.store.queryParams
@@ -54,8 +85,8 @@ import Main from './components/Main.vue';
       }
     },
     mounted(){
-      this.getPopular('movie');
-      this.getPopular('tv')
+      this.getPopular();
+      this.getPopularSeries();
     }
   }
 </script>

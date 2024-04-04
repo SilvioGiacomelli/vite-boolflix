@@ -41,6 +41,30 @@ import {store} from '../data/store'
           :overview="serie.overview"
           />
       </div>
+      <div class="row row-cols-4">
+          <Card
+          v-for="pop in this.store.popularArray"
+          :key="pop.id"
+          :title="pop.title"
+          :original_title="pop.original_title"
+          :original_language="pop.original_language"
+          :vote_average="pop.vote_average"
+          :poster_path="pop.poster_path"
+          :overview="pop.overview"
+          />
+      </div>
+      <div class="row row-cols-4">
+          <Card
+          v-for="pops in this.store.popularseriesArray"
+          :key="pops.id"
+          :title="pops.title"
+          :original_title="pops.original_title"
+          :original_language="pops.original_language"
+          :vote_average="pops.vote_average"
+          :poster_path="pops.poster_path"
+          :overview="pops.overview"
+          />
+      </div>
     </div>
   </main>
 </template>
