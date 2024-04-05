@@ -15,8 +15,6 @@ import Main from './components/Main.vue';
       }
     },
 
-      //////FILM POPOLARI///////
-
     methods:{
       startSearch() {
             this.isSearching = true;
@@ -30,6 +28,8 @@ import Main from './components/Main.vue';
           resetSearch() {
             this.isSearching = false;
           },
+
+      //////FILM POPOLARI///////    
 
       getPopular(){
         axios.get(this.store.popularUrl, {

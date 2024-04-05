@@ -24,7 +24,10 @@ import {store} from '../data/store'
   <main>
     <div class="container-xl  pt-5">
       <div class="container" v-if="store.moviesArray.length > 0">
-        <h2>FILM</h2>
+        <div class="d-flex justify-content-center">
+          <img
+          src="../assets/img/Film.png">
+        </div>
         <div class="row row-cols-4">
             <Card
             v-for="card in this.store.moviesArray"
@@ -39,7 +42,9 @@ import {store} from '../data/store'
         </div>
       </div>
       <div class="container" v-if="store.seriesArray.length > 0">
-        <h2>SERIE</h2>
+        <div class="d-flex justify-content-center">
+          <img src="../assets/img/serie.png" alt="">
+        </div>
         <div class="row row-cols-4">
             <Card
             v-for="serie in this.store.seriesArray"
@@ -54,7 +59,9 @@ import {store} from '../data/store'
         </div>
       </div>
       <div class="container" v-if="store.popularArray.length > 0">
-        <h2>FILM</h2>
+        <div class="d-flex justify-content-center">
+          <img src="../assets/img/filmpopolari.png" alt="">
+        </div>
         <div class="row row-cols-4">
           <Card
           v-for="pop in this.store.popularArray"
@@ -69,7 +76,9 @@ import {store} from '../data/store'
         </div>
       </div>
       <div class="container" v-if="store.popularseriesArray.length > 0">
-        <h2>SERIE</h2>
+        <div class="d-flex justify-content-center">
+          <img src="../assets/img/seriepopolari.png" alt="">
+        </div>
         <div class="row row-cols-4">
           <Card
           v-for="pops in this.store.popularseriesArray"
