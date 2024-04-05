@@ -21,6 +21,8 @@ import {store} from '../data/store'
         this.originaltitltleToSearch = '';
         this.languageToSearch = '';
         this.startSearch();
+        this.store.popularArray.length;
+        this.store.popularseriesArray.length;
       }
     }
   }
@@ -39,7 +41,7 @@ import {store} from '../data/store'
           <div class="input-group-prepend">
             <button 
             class="btn btn-outline-secondary" 
-            @click="startSearch"
+            @click='startSearch'
             type="button">Search
             </button>
           </div>

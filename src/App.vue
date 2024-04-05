@@ -18,6 +18,19 @@ import Main from './components/Main.vue';
       //////FILM POPOLARI///////
 
     methods:{
+      startSearch() {
+            this.isSearching = true;
+            this.getMovie();
+            this.getSeries();
+            console.log(this.store.popularArray);
+            this.store.popularArray=[];
+            this.store.popularseriesArray=[];
+          },
+          
+          resetSearch() {
+            this.isSearching = false;
+          },
+
       getPopular(){
         axios.get(this.store.popularUrl, {
           params:{
@@ -93,9 +106,9 @@ import Main from './components/Main.vue';
 
   <template>
 
-    <Header @startSearch="getSeries(),getMovie()"/>
+    <Header @startSearch="startSearch"/>
 
-    <Main />
+    <Main :is-searching="isSearching" />
 
   </template>
 

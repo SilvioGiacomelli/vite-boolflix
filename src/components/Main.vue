@@ -7,41 +7,55 @@ import {store} from '../data/store'
     },
     data(){
       return{
-        store
-      }
-    }
-  }
+        store,
+        isSearching: false,
+      };
+    },
+    methods: {
+      startSearch() {
+      this.getSeries();
+      this.getMovie();
+      this.isSearching = true;
+      },
+    },
+  };
 </script>
 <template>
   <main>
     <div class="container-xl  pt-5">
-      <h2>FILM</h2>
-      <div class="row row-cols-4">
-          <Card
-          v-for="card in this.store.moviesArray"
-          :key="card.id"
-          :title="card.title"
-          :original_title="card.original_title"
-          :original_language="card.original_language"
-          :vote_average="card.vote_average"
-          :poster_path="card.poster_path"
-          :overview="card.overview"
-          />
+      <div class="container" v-if="store.moviesArray.length > 0">
+        <h2>FILM</h2>
+        <div class="row row-cols-4">
+            <Card
+            v-for="card in this.store.moviesArray"
+            :key="card.id"
+            :title="card.title"
+            :original_title="card.original_title"
+            :original_language="card.original_language"
+            :vote_average="card.vote_average"
+            :poster_path="card.poster_path"
+            :overview="card.overview"
+            />
+        </div>
       </div>
-      <h2>SERIE</h2>
-      <div class="row row-cols-4">
-          <Card
-          v-for="serie in this.store.seriesArray"
-          :key="serie.id"
-          :title="serie.name"
-          :original_title="serie.original_name"
-          :original_language="serie.original_language"
-          :vote_average="serie.vote_average"
-          :poster_path="serie.poster_path"
-          :overview="serie.overview"
-          />
+      <div class="container" v-if="store.seriesArray.length > 0">
+        <h2>SERIE</h2>
+        <div class="row row-cols-4">
+            <Card
+            v-for="serie in this.store.seriesArray"
+            :key="serie.id"
+            :title="serie.name"
+            :original_title="serie.original_name"
+            :original_language="serie.original_language"
+            :vote_average="serie.vote_average"
+            :poster_path="serie.poster_path"
+            :overview="serie.overview"
+            />
+        </div>
       </div>
-      <div class="row row-cols-4">
+      <div class="container" v-if="store.popularArray.length > 0">
+        <h2>FILM</h2>
+        <div class="row row-cols-4">
           <Card
           v-for="pop in this.store.popularArray"
           :key="pop.id"
@@ -52,8 +66,11 @@ import {store} from '../data/store'
           :poster_path="pop.poster_path"
           :overview="pop.overview"
           />
+        </div>
       </div>
-      <div class="row row-cols-4">
+      <div class="container" v-if="store.popularseriesArray.length > 0">
+        <h2>SERIE</h2>
+        <div class="row row-cols-4">
           <Card
           v-for="pops in this.store.popularseriesArray"
           :key="pops.id"
@@ -64,6 +81,7 @@ import {store} from '../data/store'
           :poster_path="pops.poster_path"
           :overview="pops.overview"
           />
+        </div>
       </div>
     </div>
   </main>
@@ -74,7 +92,8 @@ import {store} from '../data/store'
 
 main{
   background-color: #434343;
-  color: white;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 h2{

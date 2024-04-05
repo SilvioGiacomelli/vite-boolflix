@@ -77,6 +77,7 @@ import{store} from '../../data/store'
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
   position: relative;
   overflow: hidden;
+  min-height: 430px;
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
